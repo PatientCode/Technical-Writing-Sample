@@ -1,0 +1,481 @@
+/* Variables */
+:root {
+    /* Light theme colors */
+    --primary: #1a73e8;
+    --primary-rgb: 26, 115, 232; /* RGB values for primary color */
+    --text: #202124;
+    --text-secondary: #5f6368;
+    --background: #ffffff;
+    --sidebar-bg: #f8f9fa;
+    --border: #dadce0;
+    --code-bg: #f8f9fa;
+    --header-bg: #ffffff;
+    --header-text: #202124;
+    --tip-bg: #e8f0fe;
+    --note-bg: #fef7e0;
+    --practice-bg: #e6f4ea;
+    --header-height: 56px;
+    --sidebar-width: 280px;
+    
+    /* Typography */
+    --font-heading: 'Plus Jakarta Sans', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-code: 'JetBrains Mono', monospace;
+}
+
+/* Dark theme colors */
+[data-theme="dark"] {
+    --primary: #8ab4f8;
+    --primary-rgb: 138, 180, 248; /* RGB values for dark mode primary color */
+    --text: #e8eaed;
+    --text-secondary: #9aa0a6;
+    --background: #202124;
+    --sidebar-bg: #292a2d;
+    --border: #3c4043;
+    --code-bg: #2c2c2c;
+    --header-bg: #292a2d;
+    --header-text: #e8eaed;
+    --tip-bg: rgba(138, 180, 248, 0.1);
+    --note-bg: rgba(249, 171, 0, 0.1);
+    --practice-bg: rgba(52, 168, 83, 0.1);
+}
+
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--header-height) + 2rem);
+    font-size: 16px; /* Ensure base font size is readable */
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text);
+    background-color: var(--background);
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+/* Header */
+header {
+    background-color: var(--header-bg);
+    color: var(--header-text);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-height);
+    z-index: 1000;
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.header-container {
+    padding: 0 1rem;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-menu {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-menu h1 {
+    font-size: 1.25rem;
+    margin: 0;
+    color: var(--header-text);
+}
+
+/* Buttons */
+#menu-btn, #theme-btn {
+    background: none;
+    border: none;
+    color: var(--header-text);
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    padding: 0;
+}
+
+/* Hide menu button on desktop */
+#menu-btn {
+    display: none;
+}
+
+#menu-btn:hover, #theme-btn:hover {
+    background-color: var(--sidebar-bg);
+}
+
+body.sidebar-open #menu-btn {
+    background-color: var(--primary);
+    color: white;
+}
+
+/* Main layout */
+.main-container {
+    padding-top: var(--header-height);
+    min-height: 100vh;
+    display: flex;
+}
+
+/* Sidebar */
+#sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--border);
+    height: calc(100vh - var(--header-height));
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    overflow-y: auto;
+    transform: translateX(0);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 100;
+    will-change: transform;
+    padding-bottom: 20px; /* Add padding at the bottom for better scrolling experience */
+}
+
+#sidebar nav {
+    padding: 1rem;
+}
+
+#sidebar nav ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#sidebar nav li {
+    margin-bottom: 0.25rem;
+    padding-left: 0;
+}
+
+#sidebar nav li::before {
+    display: none; /* Hide the bullet points in sidebar */
+}
+
+#sidebar nav a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: var(--text);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+}
+
+#sidebar nav a:hover {
+    background-color: rgba(var(--primary-rgb), 0.1);
+    color: var(--primary);
+}
+
+#sidebar nav a.active {
+    background-color: rgba(var(--primary-rgb), 0.15);
+    color: var(--primary);
+    font-weight: 500;
+    border-left: 3px solid var(--primary);
+    padding-left: calc(1rem - 3px);
+    box-shadow: 0 1px 3px rgba(var(--primary-rgb), 0.1);
+}
+
+/* Main content */
+main {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    padding: 2rem;
+    background: var(--background);
+    transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hero section */
+.hero {
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+.hero p {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+}
+
+/* Sections */
+section {
+    margin-bottom: 3.5rem;
+}
+
+section h2 {
+    font-size: 1.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2rem;
+    color: var(--primary);
+}
+
+section h3 {
+    font-size: 1.25rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1.2rem;
+    color: var(--text);
+}
+
+section p {
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+    color: var(--text);
+}
+
+/* Nested divs in sections (e.g., what-is, who-should-use) */
+section > div {
+    margin-bottom: 2.5rem;
+}
+
+/* Lists */
+ul, ol {
+    margin: 1.2rem 0 1.8rem;
+    padding-left: 1rem;
+}
+
+ul {
+    list-style-type: none;
+}
+
+ul li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.6;
+}
+
+/* Last list item shouldn't have margin bottom */
+ul li:last-child,
+ol li:last-child {
+    margin-bottom: 0;
+}
+
+/* Special styling for bullet points */
+ul li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+ol {
+    padding-left: 1.5rem;
+}
+
+ol li {
+    margin-bottom: 1.2rem;
+    padding-left: 0.5rem;
+    line-height: 1.6;
+}
+
+/* Adjust list spacing in subsections */
+section > div ul,
+section > div ol {
+    margin-top: 0.8rem;
+}
+
+/* Code blocks */
+pre {
+    background-color: var(--code-bg);
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+code {
+    font-family: var(--font-code);
+    font-size: 0.9rem;
+}
+
+/* Tip, note, best practice boxes */
+.tip, .note, .best-practice {
+    padding: 1.25rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.tip {
+    background-color: var(--tip-bg);
+    border-left: 4px solid var(--primary);
+}
+
+.note {
+    background-color: var(--note-bg);
+    border-left: 4px solid #f9ab00;
+}
+
+.best-practice {
+    background-color: var(--practice-bg);
+    border-left: 4px solid #34a853;
+}
+
+.tip p, .note p, .best-practice p {
+    margin: 0;
+}
+
+/* Links */
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: color-mix(in srgb, var(--primary) 70%, black);
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    /* Show menu button on mobile */
+    #menu-btn {
+        display: flex;
+    }
+    
+    #sidebar {
+        transform: translateX(-100%);
+        box-shadow: none;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        width: 80%; /* Make the sidebar not take up the full width on small screens */
+        max-width: var(--sidebar-width);
+    }
+    
+    body.sidebar-open #sidebar {
+        transform: translateX(0);
+        box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    main {
+        margin-left: 0;
+        padding: 1rem;
+    }
+    
+    /* Add overlay when sidebar is open */
+    body.sidebar-open::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 99;
+        opacity: 1;
+        transition: opacity 0.3s ease;
+    }
+    
+    /* Keep sidebar above overlay */
+    body.sidebar-open #sidebar {
+        z-index: 100;
+    }
+    
+    /* Adjust header */
+    .header-container {
+        padding: 0.75rem 1rem;
+    }
+    
+    .logo-menu h1 {
+        font-size: 1.1rem;
+    }
+    
+    /* Make hero more compact */
+    .hero h1 {
+        font-size: 1.8rem;
+        line-height: 1.3;
+    }
+    
+    .hero p {
+        font-size: 1.1rem;
+    }
+    
+    /* Make section headings smaller on mobile */
+    section h2 {
+        font-size: 1.5rem;
+    }
+    
+    section h3 {
+        font-size: 1.2rem;
+        margin-top: 2rem;
+    }
+    
+    /* Adjust code blocks for mobile */
+    pre {
+        padding: 0.75rem;
+        font-size: 0.85rem;
+    }
+    
+    /* Reduce padding in tips/notes on mobile */
+    .tip, .note, .best-practice {
+        padding: 1rem;
+    }
+}
+
+/* Section headings offset for anchor links */
+section[id] {
+    scroll-margin-top: calc(var(--header-height) + 2rem);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--sidebar-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}
+
+/* For Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) var(--sidebar-bg);
+}

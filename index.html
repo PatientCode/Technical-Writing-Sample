@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
+    <title>Mobile Website Optimization Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%231a73e8' d='M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z'/%3E%3C/svg%3E">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-menu">
+                <button id="menu-btn" aria-label="Toggle menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </button>
+                <h1>Mobile Optimization Guide</h1>
+            </div>
+            <button id="theme-btn" aria-label="Toggle theme">
+                <svg id="light-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41.39.39 1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41.39.39 1.03.39 1.41 0l1.06-1.06z"/>
+                </svg>
+                <svg id="dark-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+                    <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+    
+    <div class="main-container">
+        <aside id="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="#introduction">Introduction</a></li>
+                    <li><a href="#prerequisites">Prerequisites</a></li>
+                    <li><a href="#step1">Step 1: Responsive Design</a></li>
+                    <li><a href="#step2">Step 2: Core Web Vitals</a></li>
+                    <li><a href="#step3">Step 3: Optimize Images</a></li>
+                    <li><a href="#troubleshooting">Troubleshooting</a></li>
+                    <li><a href="#conclusion">Conclusion</a></li>
+                    <li><a href="#resources">Additional Resources</a></li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <main>
+            <section class="hero">
+                <h1>Optimize Your Website for Mobile</h1>
+                <p>A Step-By-Step Guide for Developers & Web Designers</p>
+            </section>
+            
+            <section id="introduction">
+                <h2>Introduction</h2>
+                <div id="what-is">
+                    <h3>What is Mobile Optimization?</h3>
+                    <p>Simply put, mobile optimization is the process of making your website look and function well on mobile devices.</p>
+                </div>
+                
+                <div id="who-should-use">
+                    <h3>Who Should Use This Guide?</h3>
+                    <ul>
+                        <li>Web developers optimizing sites for mobile devices</li>
+                        <li>Businesses aiming to improve mobile SEO</li>
+                        <li>Anyone managing website performance</li>
+                    </ul>
+                </div>
+                
+                <div id="what-youll-learn">
+                    <h3>What You'll Learn:</h3>
+                    <ul>
+                        <li>How to implement responsive design</li>
+                        <li>How to optimize Core Web Vitals</li>
+                        <li>How to reduce image load times</li>
+                        <li>How to test and troubleshoot for performance</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="prerequisites">
+                <h2>Prerequisites</h2>
+                <p>Before you begin, you'll need:</p>
+                <ul>
+                    <li>Basic knowledge of HTML & CSS</li>
+                    <li>Access to a website or test environment</li>
+                    <li>A Google PageSpeed Insights account (for performance testing)</li>
+                </ul>
+            </section>
+            
+            <section id="step1">
+                <h2>Step 1: Implement Responsive Design</h2>
+                <h3>What is it?</h3>
+                <p>Responsive design is a method of designing your website to automatically adapt to different screen sizes.</p>
+                
+                <h3>How To Do It:</h3>
+                <p>Add the following viewport meta tag to your HTML:</p>
+                <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code></pre>
+                
+                <p>Use CSS media queries to adjust layouts:</p>
+                <pre><code>@media only screen and (max-width: 768px) {
+    .container { width: 100%; }
+    .menu { display: none; }
+    .mobile-menu { display: block; }
+}</code></pre>
+                
+                <div class="tip">
+                    <p><strong>Tip:</strong> Always test on multiple screen sizes!</p>
+                </div>
+            </section>
+            
+            <section id="step2">
+                <h2>Step 2: Optimize Core Web Vitals</h2>
+                <h3>What is it?</h3>
+                <p>Core Web Vitals are Google's performance metrics, which include:</p>
+                <ul>
+                    <li><strong>Large Contentful Paint (LCP):</strong> This indicates how long it takes for the largest element on the page to load, typically an image or text block.</li>
+                    <li><strong>Cumulative Layout Shift (CLS):</strong> This measures the visual stability of a page during the loading process.</li>
+                    <li><strong>Interaction to Next Paint (INP):</strong> This is the latency of all interactions throughout the entire page lifecycle, not just the first one.</li>
+                </ul>
+                <p class="note"><strong>Note:</strong> INP replaced the First Input Delay (FID) metric in 2024.</p>
+                
+                <h3>How to Do It:</h3>
+                <ol>
+                    <li>Open Google's PageSpeed Insights</li>
+                    <li>Enter your website URL and click Analyze</li>
+                    <li>Follow recommended fixes (e.g. optimizing images, reducing render-blocking scripts)</li>
+                </ol>
+                
+                <div class="best-practice">
+                    <p><strong>Best Practice:</strong> Aim for LCP &lt; 2.5s, FID &lt; 100ms, CLS &lt; 0.1</p>
+                </div>
+            </section>
+            
+            <section id="step3">
+                <h2>Step 3: Optimize Images For Faster Loading</h2>
+                <h3>What is it?</h3>
+                <p>By reducing the image size without losing quality (compression), you can optimize images for faster loading.</p>
+                
+                <h3>How to Do It:</h3>
+                <p>Convert images to WebP format:</p>
+                <pre><code>cwebp -q 90 input.jpg -o output.webp</code></pre>
+                
+                <p>Enable lazy loading in HTML:</p>
+                <pre><code>&lt;img src="image.jpg" loading="lazy" alt="Example"&gt;</code></pre>
+                
+                <p>Use the &lt;picture&gt; element for responsive images.</p>
+                
+                <div class="tip">
+                    <p><strong>Tip:</strong> Compress images before uploading using TinyPNG</p>
+                </div>
+            </section>
+            
+            <section id="troubleshooting">
+                <h2>Troubleshooting & FAQs</h2>
+                <div class="faq">
+                    <h3>Problem: "The mobile version of my site is loading slowly."</h3>
+                    <p>Solution: Check if you have compressed your images, minimized CSS/JS, and enabled caching.</p>
+                    
+                    <h3>Problem: "The text is really small on mobile."</h3>
+                    <p>Solution: Use font-size: 16px; in CSS and rem units instead of pixels.</p>
+                    
+                    <h3>Problem: "My layout breaks on smaller screens."</h3>
+                    <p>Solution: Use flexbox instead of fixed pixel widths.</p>
+                </div>
+            </section>
+            
+            <section id="conclusion">
+                <h2>Conclusion</h2>
+                <p>In short, when optimizing for mobile devices, incorporate responsive design into your website, optimize for Google's Core Web Vitals, compress images to reduce load times, and regularly test mobile performance. These strategies will guarantee that mobile visitors to your website have an outstanding experience.</p>
+            </section>
+            
+            <section id="resources">
+                <h2>Additional Resources</h2>
+                <ul>
+                    <li><a href="https://web.dev/learn/pwa/" target="_blank" rel="noopener">Progressive Web Apps (PWA) Guide by web.dev</a></li>
+                    <li><a href="https://web.dev/vitals/" target="_blank" rel="noopener">Web Vitals - Essential metrics for a healthy site</a></li>
+                    <li><a href="https://developers.google.com/speed/pagespeed/insights/" target="_blank" rel="noopener">Google PageSpeed Insights</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design" target="_blank" rel="noopener">MDN Web Docs: Responsive design</a></li>
+                    <li><a href="https://www.cloudflare.com/learning/performance/more/website-performance-conversion-rates/" target="_blank" rel="noopener">Impact of Website Performance on Conversion Rates</a></li>
+                </ul>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
