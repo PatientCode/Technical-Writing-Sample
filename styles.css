@@ -51,6 +51,7 @@ html {
     scroll-behavior: smooth;
     scroll-padding-top: calc(var(--header-height) + 2rem);
     font-size: 16px; /* Ensure base font size is readable */
+    overflow-x: hidden; /* Prevent horizontal scrolling at the html level */
 }
 
 body {
@@ -60,7 +61,7 @@ body {
     line-height: 1.6;
     transition: background-color 0.3s, color 0.3s;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Prevent horizontal scrolling at the body level */
     min-height: 100vh;
     position: relative;
 }
@@ -207,9 +208,10 @@ body.sidebar-open #menu-btn {
 main {
     flex: 1;
     margin-left: var(--sidebar-width);
-    padding: 2rem;
-    background: var(--background);
-    transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 2rem 2.5rem;
+    max-width: 100%;
+    overflow-x: hidden; /* Prevent horizontal overflow */
+    box-sizing: border-box;
 }
 
 /* Hero section */
@@ -320,11 +322,13 @@ pre {
     margin: 1.5rem 0;
     border: 1px solid var(--border);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    max-width: 100%; /* Ensure code blocks don't exceed container width */
 }
 
 code {
     font-family: var(--font-code);
     font-size: 0.9rem;
+    word-break: break-word; /* Allow long words to break */
 }
 
 /* Tip, note, best practice boxes */
@@ -333,6 +337,9 @@ code {
     border-radius: 8px;
     margin: 1.5rem 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+    width: 100%;
+    overflow-wrap: break-word; /* Ensure long words don't overflow */
 }
 
 .tip {
@@ -389,6 +396,8 @@ a:hover {
     main {
         margin-left: 0;
         padding: 1rem;
+        width: 100%;
+        box-sizing: border-box;
     }
     
     /* Add overlay when sidebar is open */
@@ -441,13 +450,36 @@ a:hover {
     
     /* Adjust code blocks for mobile */
     pre {
-        padding: 0.75rem;
-        font-size: 0.85rem;
+        max-width: 100%;
+        overflow-x: auto;
+        white-space: pre-wrap; /* Allow code to wrap on mobile */
+    }
+
+    /* Ensure images are responsive */
+    img {
+        max-width: 100%;
+        height: auto;
     }
     
     /* Reduce padding in tips/notes on mobile */
     .tip, .note, .best-practice {
         padding: 1rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    /* Ensure sections don't overflow */
+    section {
+        width: 100%;
+        box-sizing: border-box;
+        overflow-wrap: break-word;
+    }
+    
+    /* Make headings wrap properly */
+    h1, h2, h3, h4, h5, h6 {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        hyphens: auto;
     }
 }
 
